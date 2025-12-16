@@ -1,0 +1,7 @@
+{
+  "name": "Good Death",
+  "description": "A compassionate, AI-powered guide for end-of-life planning, bereavement support, and finding local services. A modernized reimagining of GoodDeath resources.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
