@@ -16,8 +16,8 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({ initialPrompt, con
       id: 'welcome',
       role: 'model',
       text: contextMode === 'services' 
-        ? "I can help you find local services like hospices, funeral homes, attorneys, or support groups. What are you looking for and where?"
-        : "Hello. I am here to help you navigate end-of-life planning, answer questions about wills, or simply listen. How can I support you today?",
+        ? "I can help you find local services like hospices, palliative care centers, or support groups. Where are you located?"
+        : "Namaste. I am the Good Death AI assistant. I can help you with end-of-life planning, legal queries, or emotional support. How can I help you today?",
       timestamp: Date.now(),
     }
   ]);
@@ -112,7 +112,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({ initialPrompt, con
       <div className="bg-sage-600 px-6 py-4 flex justify-between items-center text-white">
         <div>
           <h2 className="text-lg font-serif font-medium">
-            {contextMode === 'services' ? 'Service Finder' : 'Companion'}
+            {contextMode === 'services' ? 'Service Finder' : 'Good Death Companion'}
           </h2>
           <p className="text-sage-100 text-xs">
             {contextMode === 'services' ? 'Locating trusted help nearby' : 'Private & Secure Conversation'}
@@ -156,7 +156,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({ initialPrompt, con
             )}
             
             <span className="text-[10px] text-stone-400 mt-1 px-1">
-              {msg.role === 'model' ? 'PeacefulPath AI' : 'You'} • {new Date(msg.timestamp).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
+              {msg.role === 'model' ? 'Good Death AI' : 'You'} • {new Date(msg.timestamp).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
             </span>
           </div>
         ))}
@@ -177,7 +177,7 @@ export const ChatInterface: React.FC<ChatInterfaceProps> = ({ initialPrompt, con
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-            placeholder={contextMode === 'services' ? "E.g., Find palliative care in Seattle..." : "Ask about wills, grief, or planning..."}
+            placeholder={contextMode === 'services' ? "E.g., Find palliative care in Mumbai..." : "Ask about wills, rituals, or grief..."}
             className="w-full pl-5 pr-12 py-4 bg-stone-50 border-stone-200 border rounded-xl focus:outline-none focus:ring-2 focus:ring-sage-500/50 focus:border-sage-500 transition-all shadow-inner text-stone-700 placeholder-stone-400"
             disabled={isLoading}
           />

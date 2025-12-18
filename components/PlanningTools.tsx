@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { ChecklistItem } from '../types';
-import { CheckCircle2, Circle, FileText, Shield, Heart, HardDrive } from 'lucide-react';
+import { CheckCircle2, Circle, FileText, Shield, Heart, HardDrive, Feather } from 'lucide-react';
 
 const INITIAL_ITEMS: ChecklistItem[] = [
-  { id: '1', title: 'Last Will & Testament', description: 'Draft a legal document outlining asset distribution.', completed: false, category: 'legal' },
-  { id: '2', title: 'Advance Healthcare Directive', description: 'Specify your wishes for medical treatment.', completed: false, category: 'health' },
-  { id: '3', title: 'Power of Attorney', description: 'Appoint someone to make decisions if you cannot.', completed: false, category: 'legal' },
-  { id: '4', title: 'Funeral Preferences', description: 'Decide between burial, cremation, or aquamation.', completed: false, category: 'funeral' },
-  { id: '5', title: 'Digital Legacy', description: 'Plan for social media accounts and digital assets.', completed: false, category: 'digital' },
-  { id: '6', title: 'Life Insurance', description: 'Review beneficiaries and policy details.', completed: false, category: 'legal' },
-  { id: '7', title: 'Obituary Draft', description: 'Write down key life milestones and message.', completed: false, category: 'funeral' },
+  { id: '1', title: 'Last Will & Testament', description: 'Legal document for asset distribution.', completed: false, category: 'legal' },
+  { id: '2', title: 'Advance Medical Directive', description: 'Living Will: Outline your medical treatment wishes.', completed: false, category: 'health' },
+  { id: '3', title: 'Power of Attorney', description: 'Appoint a trusted person for financial/health decisions.', completed: false, category: 'legal' },
+  { id: '4', title: 'Organ Donation Registration', description: 'Register as a donor and inform your family.', completed: false, category: 'health' },
+  { id: '5', title: 'Funeral & Ritual Wishes', description: 'Cremation/Burial preferences and ceremonial details.', completed: false, category: 'funeral' },
+  { id: '6', title: 'Digital Legacy Plan', description: 'Passwords and instructions for social media/email.', completed: false, category: 'digital' },
+  { id: '7', title: 'Emotional Will', description: 'Letters or videos for loved ones to be opened later.', completed: false, category: 'funeral' },
+  { id: '8', title: 'Financial Audit', description: 'List of bank accounts, insurance, and liabilities.', completed: false, category: 'legal' },
 ];
 
 export const PlanningTools: React.FC = () => {
@@ -25,7 +26,7 @@ export const PlanningTools: React.FC = () => {
     switch (category) {
       case 'legal': return <Shield className="w-5 h-5 text-blue-500" />;
       case 'health': return <Heart className="w-5 h-5 text-red-500" />;
-      case 'funeral': return <FileText className="w-5 h-5 text-purple-500" />;
+      case 'funeral': return <Feather className="w-5 h-5 text-purple-500" />;
       case 'digital': return <HardDrive className="w-5 h-5 text-slate-500" />;
       default: return <FileText className="w-5 h-5" />;
     }
@@ -36,16 +37,16 @@ export const PlanningTools: React.FC = () => {
   return (
     <div className="max-w-4xl mx-auto space-y-8">
       <div className="text-center space-y-3">
-        <h2 className="text-3xl font-serif text-sage-900">Your Peace of Mind Checklist</h2>
+        <h2 className="text-3xl font-serif text-sage-900">Good Death Planning Checklist</h2>
         <p className="text-stone-600 max-w-2xl mx-auto">
-          Preparing these documents is an act of love for those you leave behind. Take it one step at a time.
+          A good death is a planned death. By organizing your affairs, you offer a profound gift of peace to your loved ones.
         </p>
       </div>
 
       {/* Progress Bar */}
       <div className="bg-white p-6 rounded-xl shadow-sm border border-stone-200">
         <div className="flex justify-between items-end mb-2">
-          <span className="text-sm font-semibold text-sage-800">Progress</span>
+          <span className="text-sm font-semibold text-sage-800">Your Journey</span>
           <span className="text-2xl font-bold text-sage-600">{progress}%</span>
         </div>
         <div className="w-full bg-stone-100 rounded-full h-3">

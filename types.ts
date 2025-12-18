@@ -1,6 +1,5 @@
 export enum AppSection {
   HOME = 'HOME',
-  COMPANION = 'COMPANION',
   PLANNING = 'PLANNING',
   SERVICES = 'SERVICES',
 }

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { AppSection } from './types';
 import { ChatInterface } from './components/ChatInterface';
 import { PlanningTools } from './components/PlanningTools';
-import { Feather, Heart, Map, ListChecks, MessageCircle, Menu, X } from 'lucide-react';
+import { Feather, Heart, Map, ListChecks, Menu, X, Anchor, Search } from 'lucide-react';
 
 function App() {
   const [activeSection, setActiveSection] = useState<AppSection>(AppSection.HOME);
@@ -27,8 +27,6 @@ function App() {
 
   const renderContent = () => {
     switch (activeSection) {
-      case AppSection.COMPANION:
-        return <ChatInterface contextMode="general" />;
       case AppSection.SERVICES:
         return <ChatInterface contextMode="services" />;
       case AppSection.PLANNING:
@@ -39,41 +37,43 @@ function App() {
           <div className="space-y-16 animate-in fade-in duration-700">
             {/* Hero Section */}
             <section className="text-center space-y-6 pt-10 px-4">
+              <div className="inline-block p-3 bg-sage-100 rounded-full mb-2">
+                <Anchor className="w-8 h-8 text-sage-600" />
+              </div>
               <h1 className="text-4xl md:text-6xl font-serif text-sage-900 leading-tight">
-                Planning for a <br/>
-                <span className="text-sage-600 italic">Peaceful Journey</span>
+                Embracing Life, <br/>
+                <span className="text-sage-600 italic">Planning for the End</span>
               </h1>
               <p className="text-lg md:text-xl text-stone-600 max-w-2xl mx-auto leading-relaxed">
-                We believe that thinking about end-of-life isn't morbid—it's an act of love. 
-                Organize your wishes, find support, and discover peace of mind.
+                Welcome to <strong>Good Death</strong>. We empower you with the tools, knowledge, and support to navigate the end of life with dignity, clarity, and peace.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
                 <button 
-                  onClick={() => setActiveSection(AppSection.COMPANION)}
+                  onClick={() => setActiveSection(AppSection.PLANNING)}
                   className="px-8 py-3 bg-sage-700 text-white rounded-xl font-medium shadow-lg hover:bg-sage-800 transition-transform hover:-translate-y-0.5 flex items-center justify-center gap-2"
                 >
-                  <MessageCircle className="w-5 h-5" />
-                  Talk to Companion
+                  <ListChecks className="w-5 h-5" />
+                  Start Planning Checklist
                 </button>
                 <button 
-                  onClick={() => setActiveSection(AppSection.PLANNING)}
+                  onClick={() => setActiveSection(AppSection.SERVICES)}
                   className="px-8 py-3 bg-white text-sage-800 border border-sage-200 rounded-xl font-medium shadow-sm hover:bg-sage-50 transition-colors flex items-center justify-center gap-2"
                 >
-                  <ListChecks className="w-5 h-5" />
-                  Start Checklist
+                  <Search className="w-5 h-5" />
+                  Find Local Services
                 </button>
               </div>
             </section>
 
             {/* Features Grid */}
-            <section className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto px-4">
+            <section className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto px-4">
               <div className="bg-white p-8 rounded-2xl shadow-sm border border-stone-100 hover:shadow-md transition-shadow">
                 <div className="w-12 h-12 bg-sage-100 rounded-full flex items-center justify-center mb-6 text-sage-700">
                   <Map className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-serif text-sage-900 mb-3">Find Local Services</h3>
+                <h3 className="text-xl font-serif text-sage-900 mb-3">Service Directory</h3>
                 <p className="text-stone-600 leading-relaxed mb-4">
-                  Locate hospices, funeral homes, and bereavement support groups near you using our integrated map tools.
+                  Find trusted palliative care centers, hospices, funeral homes, and legal experts in your area.
                 </p>
                 <button onClick={() => setActiveSection(AppSection.SERVICES)} className="text-sage-600 font-medium hover:underline text-sm">Find nearby &rarr;</button>
               </div>
@@ -82,22 +82,11 @@ function App() {
                 <div className="w-12 h-12 bg-sage-100 rounded-full flex items-center justify-center mb-6 text-sage-700">
                   <ListChecks className="w-6 h-6" />
                 </div>
-                <h3 className="text-xl font-serif text-sage-900 mb-3">Organize Your Wishes</h3>
+                <h3 className="text-xl font-serif text-sage-900 mb-3">Planning Tools</h3>
                 <p className="text-stone-600 leading-relaxed mb-4">
-                  Interactive checklists for wills, advance directives, and digital legacies. ensure nothing is overlooked.
+                  Interactive checklists for Wills, Advance Directives, and Digital Legacies to ensuring nothing is left to chance.
                 </p>
                 <button onClick={() => setActiveSection(AppSection.PLANNING)} className="text-sage-600 font-medium hover:underline text-sm">Start planning &rarr;</button>
-              </div>
-
-              <div className="bg-white p-8 rounded-2xl shadow-sm border border-stone-100 hover:shadow-md transition-shadow">
-                <div className="w-12 h-12 bg-sage-100 rounded-full flex items-center justify-center mb-6 text-sage-700">
-                  <Heart className="w-6 h-6" />
-                </div>
-                <h3 className="text-xl font-serif text-sage-900 mb-3">Grief Support</h3>
-                <p className="text-stone-600 leading-relaxed mb-4">
-                  A compassionate AI companion to listen, answer questions, and provide resources for coping with loss.
-                </p>
-                <button onClick={() => setActiveSection(AppSection.COMPANION)} className="text-sage-600 font-medium hover:underline text-sm">Chat now &rarr;</button>
               </div>
             </section>
 
@@ -106,9 +95,9 @@ function App() {
               <div className="max-w-3xl mx-auto text-center">
                 <Feather className="w-8 h-8 text-sage-400 mx-auto mb-6" />
                 <blockquote className="text-2xl font-serif text-sage-800 italic mb-6">
-                  "Death is not the opposite of life, but a part of it."
+                  "The fear of death follows from the fear of life. A man who lives fully is prepared to die at any time."
                 </blockquote>
-                <cite className="text-sage-600 font-medium not-italic">— Haruki Murakami</cite>
+                <cite className="text-sage-600 font-medium not-italic">— Mark Twain</cite>
               </div>
             </section>
           </div>
@@ -126,15 +115,14 @@ function App() {
             onClick={() => setActiveSection(AppSection.HOME)}
           >
             <div className="w-8 h-8 bg-sage-600 rounded-lg flex items-center justify-center text-white">
-              <Feather className="w-5 h-5" />
+              <Anchor className="w-5 h-5" />
             </div>
-            <span className="text-xl font-serif font-bold text-sage-900 tracking-tight">PeacefulPath</span>
+            <span className="text-xl font-serif font-bold text-sage-900 tracking-tight">Good Death</span>
           </div>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center space-x-2">
             <NavItem section={AppSection.HOME} icon={Feather} label="Home" />
-            <NavItem section={AppSection.COMPANION} icon={MessageCircle} label="Companion" />
             <NavItem section={AppSection.SERVICES} icon={Map} label="Find Services" />
             <NavItem section={AppSection.PLANNING} icon={ListChecks} label="Planning" />
           </div>
@@ -156,12 +144,6 @@ function App() {
               className="w-full text-left px-4 py-3 rounded-lg hover:bg-sage-50 text-sage-800 font-medium"
             >
               Home
-            </button>
-            <button
-              onClick={() => { setActiveSection(AppSection.COMPANION); setMobileMenuOpen(false); }}
-              className="w-full text-left px-4 py-3 rounded-lg hover:bg-sage-50 text-sage-800 font-medium"
-            >
-              Companion
             </button>
             <button
               onClick={() => { setActiveSection(AppSection.SERVICES); setMobileMenuOpen(false); }}
@@ -189,19 +171,18 @@ function App() {
         <div className="max-w-6xl mx-auto grid md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
-              <Feather className="w-5 h-5" />
-              <span className="text-xl font-serif font-bold text-white">PeacefulPath</span>
+              <Anchor className="w-5 h-5" />
+              <span className="text-xl font-serif font-bold text-white">Good Death</span>
             </div>
             <p className="text-sage-300 max-w-sm leading-relaxed">
-              Empowering you with knowledge, dignity, and peace of mind during life's most profound transitions.
+              Based on the Good Death mission. Helping you navigate life's final chapter with clarity, love, and dignity.
             </p>
           </div>
           <div>
             <h4 className="text-white font-semibold mb-4">Resources</h4>
             <ul className="space-y-2 text-sage-300">
-              <li><button onClick={() => setActiveSection(AppSection.PLANNING)} className="hover:text-white transition-colors">Digital Will</button></li>
+              <li><button onClick={() => setActiveSection(AppSection.PLANNING)} className="hover:text-white transition-colors">Advance Directives</button></li>
               <li><button onClick={() => setActiveSection(AppSection.SERVICES)} className="hover:text-white transition-colors">Find Hospice</button></li>
-              <li><button onClick={() => setActiveSection(AppSection.COMPANION)} className="hover:text-white transition-colors">Grief Support</button></li>
             </ul>
           </div>
           <div>
@@ -214,7 +195,7 @@ function App() {
           </div>
         </div>
         <div className="max-w-6xl mx-auto pt-8 mt-8 border-t border-sage-800 text-center text-sage-400 text-sm">
-          © {new Date().getFullYear()} PeacefulPath. Not legal or medical advice.
+          © {new Date().getFullYear()} Good Death. Information provided is for educational purposes only.
         </div>
       </footer>
     </div>
